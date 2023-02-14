@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download</title>
+    <link rel="stylesheet" href="css/awsm.min.css">
+    <meta property="og:title" content="awsm.css: Download">
+    <meta property="og:description" content="Download the minified version or use unpkg, npm and so on">
+    <meta property="og:image" content="https://igoradamenko.github.io/awsm.css/images/cover.png">
+    <meta property="og:url" content="https://igoradamenko.github.io/awsm.css/download.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@igoradamenko">
+    <script>
+      if (location.hostname === 'localhost') localStorage.clear();
+      var version = '3.0.7';
+      var themes = JSON.parse('[{"title":"white","prismTheme":""},{"title":"gondola","prismTheme":"tomorrow"},{"title":"mischka","prismTheme":"okaidia"},{"title":"big-stone","prismTheme":"tomorrow"},{"title":"black","prismTheme":""},{"title":"tasman","prismTheme":""},{"title":"pastel-pink","prismTheme":""},{"title":"pearl-lusta","prismTheme":"solarizedlight"}]');
+      var storedVersion = localStorage.getItem('awsm-version');
+      
+      if (version !== storedVersion) {
+        localStorage.removeItem('awsm-current-theme');
+        localStorage.removeItem('awsm-themes');
+        localStorage.setItem('awsm-version', version);
+      }
+      
+      function getCSSFileName(theme) {
+        return 'css/awsm_theme_' + theme + '.min.css';
+      }
+      
+      function appendStyles(str) {
+        var style = document.createElement('style');
+        style.innerHTML = str;
+        document.querySelector('head').appendChild(style);
+      }
+      
+      function loadTheme() {
+        var theme = localStorage.getItem('awsm-current-theme');
+      
+        if (!theme || theme === 'white') return;
+      
+        reloadTheme(theme);
+      }
+      
+      function reloadTheme(theme) {
+        var storedThemesStr = localStorage.getItem('awsm-themes');
+      
+        if (!storedThemesStr) return;
+      
+        var storedThemes = JSON.parse(storedThemesStr);
+      
+        appendStyles(storedThemes[theme]);
+      }
+      
+      loadTheme();
+      
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>awsm.css</h1>
+      <p>It makes your <abbr title="HyperText Markup Language is the standard markup language for creating web pages and web applications.">HTML</abbr> beautiful
+      </p>
+      <nav>
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="elements.html">Elements</a></li>
+          <li>Download</li>
+          <li><a href="plugins.html">Plugins</a></li>
+          <li><a href="https://github.com/igoradamenko/awsm.css" target="_blank">GitHub</a></li>
+          <li>
+            <select id="theme-changer" onchange="updateTheme(this.value)">
+              <option value="white" selected>white</option>
+              <option value="gondola">gondola</option>
+              <option value="mischka">mischka</option>
+              <option value="big-stone">big-stone</option>
+              <option value="black">black</option>
+              <option value="tasman">tasman</option>
+              <option value="pastel-pink">pastel-pink</option>
+              <option value="pearl-lusta">pearl-lusta</option>
+            </select>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <article>
+        <h1>Download</h1>
+        <p>Download the latest version here — <a href="css/awsm.css">awsm.css</a>.
+        </p>
+        <p>Minified — <a href="css/awsm.min.css">awsm.min.css</a> (≈3 Kb after gzip).
+        </p>
+        <p>You also can <a href="https://github.com/igoradamenko/awsm.css/archive/master.zip">download tarball of the project</a>.
+        </p>
+        <section>
+          <h2><a id="sealed" href="#sealed" aria-hidden="true"></a>Sealed
+          </h2>
+          <p>
+            If you want to to use awsm.css inside any other projects without any side effects,
+            just download “sealed” version that applies styles to <code>.awsm</code> selector, without changing global namespace.
+          </p>
+          <p>Here it is: <a href="css/awsm_sealed.css">awsm_sealed.css</a>, <a href="css/awsm_sealed.min.css">awsm_sealed.min.css</a>.
+          </p>
+        </section>
+        <section>
+          <h2><a id="themes" href="#themes" aria-hidden="true"></a>Themes
+          </h2>
+          <p>Here is a list of all available themes:</p>
+          <dl>
+            <dt><span style="background: linear-gradient(to right, #000 0%, #000 50%, #fff 50%, #fff 100%); display: inline-block; width: .75rem; height: .75rem; border-radius: 50%; border: 1px solid #aaa;"></span> white
+            </dt>
+            <dd>
+              <p>Simple black on white theme, that you saw when firstly met awsm.css.</p>
+              <p><a href="css/awsm_theme_white.css">Original</a> (<a href="css/awsm_theme_white.min.css">min</a>), <a href="css/awsm_theme_white._sealed.css">sealed</a> (<a href="css/awsm_theme_white._sealed.min.css">min</a>).
+              </p>
+            </dd>
+            <dt><span style="background: linear-gradient(to right, #FFF2E1 0%, #FFF2E1 50%, #1F1010 50%, #1F1010 100%); display: inline-block; width: .75rem; height: .75rem; border-radius: 50%; border: 1px solid #763F28;"></span> gondola
+            </dt>
+            <dd>
+              <p>“Premium” theme with dark wine background color.</p>
+              <p><a href="css/awsm_theme_gondola.css">Original</a> (<a href="css/awsm_theme_gondola.min.css">min</a>), <a href="css/awsm_theme_gondola._sealed.css">sealed</a> (<a href="css/awsm_theme_gondola._sealed.min.css">min</a>).
+              </p>
+            </dd>
+            <dt><span style="background: linear-gradient(to right, #3A3B45 0%, #3A3B45 50%, #D3D7DD 50%, #D3D7DD 100%); display: inline-block; width: .75rem; height: .75rem; border-radius: 50%; border: 1px solid #9197A3;"></span> mischka
+            </dt>
+            <dd>
+              <p>Grey-ish military looking theme with nice red links.</p>
+              <p><a href="css/awsm_theme_mischka.css">Original</a> (<a href="css/awsm_theme_mischka.min.css">min</a>), <a href="css/awsm_theme_mischka._sealed.css">sealed</a> (<a href="css/awsm_theme_mischka._sealed.min.css">min</a>).
+              </p>
+            </dd>
+            <dt><span style="background: linear-gradient(to right, #99C0C9 0%, #99C0C9 50%, #1B2D3E 50%, #1B2D3E 100%); display: inline-block; width: .75rem; height: .75rem; border-radius: 50%; border: 1px solid #145E86;"></span> big-stone
+            </dt>
+            <dd>
+              <p>Awesome colored dark blue theme that looks like you're under water. I'm sure that Aquaman likes this theme!</p>
+              <p><a href="css/awsm_theme_big-stone.css">Original</a> (<a href="css/awsm_theme_big-stone.min.css">min</a>), <a href="css/awsm_theme_big-stone._sealed.css">sealed</a> (<a href="css/awsm_theme_big-stone._sealed.min.css">min</a>).
+              </p>
+            </dd>
+            <dt><span style="background: linear-gradient(to right, #fff 0%, #fff 50%, #000 50%, #000 100%); display: inline-block; width: .75rem; height: .75rem; border-radius: 50%; border: 1px solid #444;"></span> black
+            </dt>
+            <dd>
+              <p>I created this theme using color inversion on the white version. And I got old-fashion theme that looks like you're in 80's.</p>
+              <p><a href="css/awsm_theme_black.css">Original</a> (<a href="css/awsm_theme_black.min.css">min</a>), <a href="css/awsm_theme_black._sealed.css">sealed</a> (<a href="css/awsm_theme_black._sealed.min.css">min</a>).
+              </p>
+            </dd>
+            <dt><span style="background: linear-gradient(to right, #742E1E 0%, #742E1E 50%, #DAE4D8 50%, #DAE4D8 100%); display: inline-block; width: .75rem; height: .75rem; border-radius: 50%; border: 1px solid #9A5C37;"></span> tasman
+            </dt>
+            <dd>
+              <p>Do you like pistachios?</p>
+              <p><a href="css/awsm_theme_tasman.css">Original</a> (<a href="css/awsm_theme_tasman.min.css">min</a>), <a href="css/awsm_theme_tasman._sealed.css">sealed</a> (<a href="css/awsm_theme_tasman._sealed.min.css">min</a>).
+              </p>
+            </dd>
+            <dt><span style="background: linear-gradient(to right, #173957 0%, #173957 50%, #ffd9e3 50%, #ffd9e3 100%); display: inline-block; width: .75rem; height: .75rem; border-radius: 50%; border: 1px solid #46799A;"></span> pastel-pink
+            </dt>
+            <dd>
+              <p>Just a nice pink theme.</p>
+              <p><a href="css/awsm_theme_pastel-pink.css">Original</a> (<a href="css/awsm_theme_pastel-pink.min.css">min</a>), <a href="css/awsm_theme_pastel-pink._sealed.css">sealed</a> (<a href="css/awsm_theme_pastel-pink._sealed.min.css">min</a>).
+              </p>
+            </dd>
+            <dt><span style="background: linear-gradient(to right, #411B33 0%, #411B33 50%, #FBECDA 50%, #FBECDA 100%); display: inline-block; width: .75rem; height: .75rem; border-radius: 50%; border: 1px solid #dcafb5;"></span> pearl-lusta
+            </dt>
+            <dd>
+              <p>Really warm theme with colors like orange, red, pink and some others.</p>
+              <p><a href="css/awsm_theme_pearl-lusta.css">Original</a> (<a href="css/awsm_theme_pearl-lusta.min.css">min</a>), <a href="css/awsm_theme_pearl-lusta._sealed.css">sealed</a> (<a href="css/awsm_theme_pearl-lusta._sealed.min.css">min</a>).
+              </p>
+            </dd>
+          </dl>
+        </section>
+        <section>
+          <h2><a id="unpkg" href="#unpkg" aria-hidden="true"></a>unpkg
+          </h2>
+          <p>You can use unpkg for link latest or exact version of the library:</p>
+          <pre><code>&lt;link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm.min.css"&gt;</code></pre>
+          <p>All themes are available there too:</p>
+          <pre><code>&lt;link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm_theme_big-stone.min.css"&gt;</code></pre>
+          <p>Get more information about the unpkg <abbr title="A content delivery network or content distribution network is a globally distributed network of proxy servers deployed in multiple data centers.">CDN</abbr> on <a href="https://unpkg.com/" title="unpkg is a fast, global content delivery network for stuff that is published to npm" target="_blank">unpkg.com</a>.
+          </p>
+        </section>
+        <section>
+          <h2><a id="postcss" href="#postcss" aria-hidden="true"></a>PostCSS API
+          </h2>
+          <p>If you install <a href="https://www.npmjs.com/package/awsm.css" title="awsm.css in npm registry" target="_blank">npm package</a>, you can use library as PostCSS plugin:
+          </p>
+          <pre><code>const postcss = require('postcss');
+const awsm = require('awsm.css');
+
+postcss([awsm({ theme: 'tasman', sealed: true })])
+  .process('a {color: red}')
+  .then(result =&gt; {
+    console.log(result.css); // awsm.css prepends your CSS 
+  });</code></pre>
+          <section>
+            <h3><a id="options" href="#options" aria-hidden="true"></a>Options
+            </h3>
+            <dl>
+              <dt>
+                <var>theme</var>
+              </dt>
+              <dd>Defines theme to inject.<br><em>Default: <code>white</code>.</em></dd>
+              <dt>
+                <var>sealed</var>
+              </dt>
+              <dd>When set to <code>true</code>, styles are wrapped by <code>.awsm</code> selector. Useful when you don't want awsm.css to change global namespace.<br><em>Default: <code>false</code>.</em>
+              </dd>
+            </dl>
+          </section>
+        </section>
+        <section>
+          <h2><a id="license" href="#license" aria-hidden="true"></a>License
+          </h2>
+          <p>awsm.css licensed under <a href="http://en.wikipedia.org/wiki/MIT_License">the MIT</a>.
+          </p>
+          <p>
+            The MIT License places almost no restrictions on what you can do with this lib.
+            You are free to use it in commercial projects as long as the copyright is left intact.
+          </p>
+        </section>
+        <section>
+          <h2><a id="credits" href="#credits" aria-hidden="true"></a>Credits
+          </h2>
+          <p>Thanks to <a href="https://www.instagram.com/xnmlsx/" title="@xnmlsx in Instagram" target="_blank">Anastasia Medvedeva</a> for photo & video used in examples, and for themes <a href="https://www.instagram.com/cake4am/" title="@cake4am in Instagram" target="_blank">inspiration</a>.
+          </p>
+        </section>
+      </article>
+    </main>
+    <footer>
+      <p>Igor Adamenko</p>
+    </footer>
+    <script>
+      function loadCSS(path, cb) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', path);
+        xhr.onreadystatechange = function() {
+          if (this.readyState === 4 && this.status === 200) {
+            cb(this.responseText);
+          }
+        };
+        xhr.send();
+      }
+      
+      function updateTheme(theme) {
+        localStorage.setItem('awsm-current-theme', theme);
+        loadCSS(getCSSFileName(theme), function(text) {
+          var storedThemesStr = localStorage.getItem('awsm-themes');
+          var storedThemes = JSON.parse(storedThemesStr) || {};
+          storedThemes[theme] = text;
+      
+          localStorage.setItem('awsm-themes', JSON.stringify(storedThemes));
+          reloadTheme(theme);
+        });
+      }
+      
+      var theme = localStorage.getItem('awsm-current-theme');
+      
+      if (theme && theme !== 'white') {
+        document.getElementById('theme-changer').value = theme;
+      }
+      
+    </script>
+    <!--                                                                                 -->
+    <!--                      ."-,.__                                                    -->
+    <!--                      `.     `.  ,                                               -->
+    <!--                   .--'  .._,'"-' `.                                             -->
+    <!--                  .    .'         `'                                             -->
+    <!--                  `.   /          ,'                                             -->
+    <!--                    `  '--.   ,-"'                                               -->
+    <!--                     `"`   |  \                                                  -->
+    <!--                        -. \, |                                                  -->
+    <!--                         `--Y.'      ___.                                        -->
+    <!--                              \     L._, \                                       -->
+    <!--                    _.,        `.   <  <\                _                       -->
+    <!--                  ,' '           `, `.   | \            ( `                      -->
+    <!--               ../, `.            `  |    .\`.           \ \_                    -->
+    <!--              ,' ,..  .           _.,'    ||\l            )  '".                 -->
+    <!--             , ,'   \           ,'.-.`-._,'  |           .  _._`.                -->
+    <!--           ,' /      \ \        `' ' `--/   | \          / /   ..\               -->
+    <!--         .'  /        \ .         |\__ - _ ,'` `        / /     `.`.             -->
+    <!--         |  '          ..         `-...-"  |  `-'      / /        . `.           -->
+    <!--         | /           |L__           |    |          / /          `. `.         -->
+    <!--        , /            .   .          |    |         / /             ` `         -->
+    <!--       / /          ,. ,`._ `-_       |    |  _   ,-' /               ` \        -->
+    <!--      / .           \"`_/. `-_ \_,.  ,'    +-' `-'  _,        ..,-.    \`.       -->
+    <!--     .  '         .-f    ,'   `    '.       \__.---'     _   .'   '     \ \      -->
+    <!--     ' /          `.'    l     .' /          \..      ,_|/   `.  ,'`     L`      -->
+    <!--     |'      _.-""` `.    \ _,'  `            \ `.___`.'"`-.  , |   |    | \     -->
+    <!--     ||    ,'      `. `.   '       _,...._        `  |    `/ '  |   '     .|     -->
+    <!--     ||  ,'          `. ;.,.---' ,'       `.   `.. `-'  .-' /_ .'    ;_   ||     -->
+    <!--     || '              V      / /           `   | `   ,'   ,' '.    !  `. ||     -->
+    <!--     ||/            _,-------7 '              . |  `-'    l         /    `||     -->
+    <!--     . |          ,' .-   ,' ||               | .-.        `.      .'     ||     -->
+    <!--      `'        ,'    `".'    |               |    `.        '. -.'       `'     -->
+    <!--               /      ,'      |               |,'    \-.._,.'/'                  -->
+    <!--               .     /        .               .       \    .''                   -->
+    <!--             .`.    |         `.             /         :_,'.'                    -->
+    <!--               \ `...\   _     ,'-.        .'         /_.-'                      -->
+    <!--                `-.__ `,  `'   .  _.>----''.  _  __  /                           -->
+    <!--                     .'        /"'          |  "'   '_                           -->
+    <!--                    /_|.-'\ ,".             '.'`__'-( \                          -->
+    <!--                      / ,"'"\,'               `/  `-.|" mh                       -->
+    <!--                                                                                 -->
+    <!--                          awsm.css v3.0.0 “Charizard”                            -->
+    <!--                                                                                 -->
+  </body>
+</html>
