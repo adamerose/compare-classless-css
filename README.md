@@ -1,6 +1,6 @@
 # About
 
-This is a simple web app for easily comparing the appearance of a page between various classless CSS frameworks. The rating values are my subjective opinion.
+This is a simple web app for easily comparing the appearance of a page between many classless CSS frameworks. Let me know if I missed any! The rating values are my subjective opinion. 
 
 Drag and drop an HTML file to the dropzone to display it instead of the default template.
 
