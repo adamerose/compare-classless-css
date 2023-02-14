@@ -4,7 +4,7 @@
 
 Preview the appearance of various classless CSS frameworks. Let me know if I missed any! The rating values are my subjective opinion. Drag and drop an HTML file to the dropzone to display it instead of the default template.
 
-[Live Demo](https://sage-creponne-02deb9.netlify.app/)
+[Live Demo](https://compare-classless-css.netlify.app/)
 
 
 # References
