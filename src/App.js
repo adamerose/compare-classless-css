@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
 import ClasslessCssPicker from "./ClasslessCssPicker";
 
 const App = () => {
   return (
     <>
-      <ClasslessCssPicker />
+      <BrowserRouter>
+        <ClasslessCssPicker />
+      </BrowserRouter>
     </>
   );
 };

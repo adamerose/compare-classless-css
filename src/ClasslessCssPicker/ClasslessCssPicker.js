@@ -1,5 +1,6 @@
 import _ from "lodash";
 import React, { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import detailsRaw from "./details";
 import Dropzone from "./Dropzone";
@@ -9,19 +10,19 @@ var htmlModule = require("raw-loader!../demo.html");
 var html = htmlModule.default;
 
 const ClasslessCssPicker = ({ handleTemplateChange }) => {
-  // Framework details
-  const [details, setDetails] = useState(detailsRaw);
-  const [ix, setIx] = useState(0);
   const [orderBy, setOrderBy] = useState("Rating");
+  // Keep details in state so we can update it after fetching star stats
+  const [details, setDetails] = useState(detailsRaw);
 
-  let detailsSorted = details;
+  let detailsSorted;
   if (orderBy === "Name") {
     detailsSorted = _.orderBy(details, [(x) => x.name.toLowerCase()], ["asc"]);
   } else if (orderBy === "Rating") {
     detailsSorted = _.orderBy(
       details,
-      [(x) => x.rating * 100000 + x.starCount],
-      ["desc"]
+      // sort by rating, then by star count
+      [(x) => x.rating, (x) => x.starCount],
+      ["desc", "desc"]
     );
   } else if (orderBy === "GitHub Stars") {
     detailsSorted = _.orderBy(details, [(x) => x.starCount], ["desc"]);
@@ -36,10 +37,28 @@ const ClasslessCssPicker = ({ handleTemplateChange }) => {
     ...detailsSorted,
   ];
 
+  // Set default style based on URL
+  let [searchParams, setSearchParams] = useSearchParams();
+  let urlStyleName = searchParams.get("style");
+
+  if (urlStyleName === null) {
+    urlStyleName = "None";
+  }
+
+  const [selectedName, setSelectedName] = useState(urlStyleName);
+  const ix = detailsFull.findIndex((x) => x.name === selectedName);
   const currentDetail = detailsFull[ix];
 
+  console.log({
+    ix,
+    currentDetail,
+    urlStyleName,
+    detailsFull,
+  });
+
   const handleStyleChange = (name) => {
-    setIx(detailsFull.findIndex((x) => x.name === name));
+    setSelectedName(name);
+    setSearchParams(name === "None" ? {} : { style: name });
 
     // Doing this because I'm not sure what event triggers on re-rendered <link> load finished
     setTimeout(() => {
@@ -61,7 +80,6 @@ const ClasslessCssPicker = ({ handleTemplateChange }) => {
     });
 
     Promise.all(detailPromises).then((newDetails) => {
-      console.log("ASDF", newDetails);
       setDetails(newDetails);
     });
   }, []);
@@ -125,6 +143,7 @@ const ClasslessCssPicker = ({ handleTemplateChange }) => {
                 Website
               </a>
               <img
+                id="stars"
                 src={`https://img.shields.io/github/stars/${currentDetail.repo}.svg`}
                 alt=""
               />
@@ -154,6 +173,14 @@ const ClasslessCssPicker = ({ handleTemplateChange }) => {
           >
             Copy &lt;link&gt; Tags
           </button>
+
+          <a href="https://github.com/adamerose/compare-classless-css">
+            <img
+              id="github"
+              src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+              alt="GitHub"
+            ></img>
+          </a>
         </div>
 
         {currentDetail.stylesheets.map((stylesheet, ix) => (
@@ -224,8 +251,12 @@ const StyledWrapper = styled.div`
       gap: 10px !important;
     }
 
-    & img {
+    & #stars {
       height: 20px !important;
+    }
+    & #github {
+      height: 50px !important;
+      margin-left: auto !important;
     }
 
     & .drag_over {
