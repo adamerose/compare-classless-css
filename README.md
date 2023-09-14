@@ -2,7 +2,7 @@
 
 # About
 
-Preview the appearance of various classless CSS frameworks. Let me know if I missed any! Drag and drop an HTML file to the dropzone to display it instead of the default template.
+Preview the appearance of various classless CSS frameworks. Drag and drop an HTML file to the dropzone to display it instead of the default template.
 
 [Live Demo](https://compare-classless-css.netlify.app/)
 
